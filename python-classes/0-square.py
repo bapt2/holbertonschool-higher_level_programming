@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-    """ print a square
 
-
-
-
-
-    Attributes:
-
-    """
 class Square:
-
+    #this is a test
     pass
