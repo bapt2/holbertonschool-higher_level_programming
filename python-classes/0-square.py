@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-class Square:
     """ print a square
 
 
@@ -10,4 +8,6 @@ class Square:
     Attributes:
 
     """
+class Square:
+
     pass
