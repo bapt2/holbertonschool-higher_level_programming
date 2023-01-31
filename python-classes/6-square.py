@@ -47,6 +47,7 @@ class Square:
             raise TypeError(s)
         if type(value[1]) is not int:
             raise TypeError(s)
+        self.__position = value
 
     def my_print(self):
         if self.__size == 0:
