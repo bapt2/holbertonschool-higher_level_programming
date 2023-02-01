@@ -18,6 +18,10 @@ def matrix_divided(matrix, div):
         for i in n_m:
             if not isinstance(i, int) and not isinstance(i, float):
                 raise te
+
+    for row in matrix:
+        if len(row) != len(matrix[0]):
+            raise TypeError("Each row of the matrix must have the same size")
     if div == 0:
         raise ZeroDivisionError("division by zero")
     if not isinstance(div, int) and not isinstance(div, float):
