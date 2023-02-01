@@ -9,4 +9,4 @@ Traceback(most recent call last)
 TypeError: last_name must be a string
 
 >>> say_my_name("bob", "smith")
-My name is bob, smith
+My name is bob smith
