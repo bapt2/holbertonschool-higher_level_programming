@@ -4,7 +4,7 @@
 
 def matrix_divided(matrix, div):
     """ divide a matrix """
-    n_m = []
+    n_m = [[]]
     if type(matrix) is not int:
         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
     if type(div) is not int or type(div) is not float:
