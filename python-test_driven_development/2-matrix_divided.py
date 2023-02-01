@@ -7,11 +7,11 @@ def matrix_divided(matrix, div):
     te = TypeError("matrix must be a matrix (list of lists)\
  of integers/floats")
 
-    if div is None or matrix is None:
-        raise TypeError("matrix_divided() missing 2 required \
-        positional arguments: 'matrix' and 'div'")
     if div == float('inf'):
         raise TypeError('div must be a number')
+    if matrix is None or div is None:
+        raise TypeError("matrix_divided() missing 2 required \
+        positional arguments: 'matrix' and 'div'")
     if len(matrix) == 0 or len(matrix[0]) == 0:
         raise te
     if not isinstance(matrix, list):
