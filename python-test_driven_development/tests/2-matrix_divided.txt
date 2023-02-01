@@ -35,7 +35,6 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last)
 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
->>> matrix = [[5, 4], [8, 9]]
->>> matrix_divided(matrix, float('inf'))
+>>> matrix_divided([[5, 4], [8, 9]], float('inf'))
 Traceback (most recent call last):
 TypeError: div must be a number
