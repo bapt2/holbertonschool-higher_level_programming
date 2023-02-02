@@ -9,12 +9,16 @@ class Rectangle:
         self.width = width
 
     def area(self):
+        if self.width == 0 or self.height == 0:
+            self.area = 0
         return (self.width * self.height)
 
     def perimeter(self):
-        if self.width == 0 or self.height == 0:
+        if (self.width == 0 or self.height == 0):
             self.perimeter = 0
+            return self.perimeter
         return ((self.width * 2) + (self.height * 2))
+
     @property
     def width(self):
         return self.__width
