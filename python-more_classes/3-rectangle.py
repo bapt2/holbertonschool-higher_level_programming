@@ -44,10 +44,11 @@ class Rectangle:
         self.__height = value
 
     def __str__(self):
-        if self.width == 'o' or self.height == 'o':
+        if self.width == 0 or self.height == 0:
             return ""
         for i in range(self.height):
             for j in range(self.width):
                 print("#", end='')
-            print()
+            if i != self.height - 1:
+                print()
         return ''
