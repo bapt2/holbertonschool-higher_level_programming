@@ -2,7 +2,6 @@
 """ class that inherits """
 
 
-
 class MyList(list):
     """ class MyList that inherits from list """
     def __init__(self):
