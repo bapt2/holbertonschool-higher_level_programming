@@ -9,6 +9,4 @@ class MyList(list):
         super().__init__()
 
     def print_sorted(self):
-        if not isinstance(MyList, int):
-            raise TypeError("MyList must be a int")
         print(sorted(self))
