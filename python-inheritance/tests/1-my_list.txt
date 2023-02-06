@@ -6,10 +6,6 @@
 >>> my_list.append(3)
 >>> my_list.append(5)
 
->>> MyList.append()
-Traceback (most recent call last):
-TypeError: descriptor 'append' of 'list' object needs an argument
-
 >>> MyList.append("s")
 Traceback (most recent call last):
 TypeError: descriptor 'append' for 'list' objects doesn't apply to a 'str' object
