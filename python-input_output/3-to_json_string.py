@@ -2,6 +2,10 @@
 """ doc """
 
 
+import json
+
+
 def to_json_string(my_obj):
     """ doc """
-    return (str(my_obj))
+
+    return json.dumps(my_obj)
