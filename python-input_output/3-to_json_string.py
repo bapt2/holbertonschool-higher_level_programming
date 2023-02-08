@@ -4,4 +4,4 @@
 
 def to_json_string(my_obj):
     """ doc """
-    return my_obj
+    return (str(my_obj))
