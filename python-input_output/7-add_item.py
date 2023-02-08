@@ -9,7 +9,7 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 if __name__ == '__main__':
     args = sys.argv
     filename = "add_item.json"
-    with open(filename, 'r') as f:
+    with open(filename, 'a') as f:
         try:
             my_list = load_from_json_file(filename)
         except:
