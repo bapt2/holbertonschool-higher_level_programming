@@ -10,7 +10,7 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        if  isinstance(attrs, list):
+        if isinstance(attrs, list):
             nl = {}
             for key, value in self.__dict__.items():
                 for element in attrs:
