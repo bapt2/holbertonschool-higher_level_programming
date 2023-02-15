@@ -39,6 +39,12 @@ class test_Square(unittest.TestCase):
             r1.display()
             result = buffer.getvalue()
         self.assertEqual(result, eo)
+        r1 = Square(2)
+        eo = '##\n##\n'
+        with StringIO() as buffer, redirect_stdout(buffer):
+            r1.display()
+            result = buffer.getvalue()
+        self.assertEqual(result, eo)
 
         r = Square(1, 2, 3, 4)
         r.update(89)
