@@ -3,10 +3,10 @@
 
 
 import unittest
-from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
 from models.square import Square
+from contextlib import redirect_stdout
 
 class test_Square(unittest.TestCase):
     """ unittest """
@@ -20,31 +20,31 @@ class test_Square(unittest.TestCase):
         self.assertEqual(r.area(), 36)
 
         self.assertRaisesRegex(
-            TypeError, "size must be an integer", Rectangle, "6", 4, 2, 18)
+        TypeError, "width must be an integer", Square, "6", 4, 2, 18)
         self.assertRaisesRegex(
-            TypeError, "x must be an integer", Rectangle, 8, 6, "4", 2, 18)
+        TypeError, "x must be an integer", Square, 6, "4", 2, 18)
         self.assertRaisesRegex(
-            TypeError, "y must be an integer", Rectangle, 8, 6, 4, "2", 18)
+        TypeError, "y must be an integer", Square, 6, 4, "2", 18)
         self.assertRaisesRegex(
-            ValueError, "size must be > 0", Rectangle, 8, 0, 4, 2, 18)
+        ValueError, "width must be > 0", Square, -1, 4, 2, 18)
         self.assertRaisesRegex(
-            ValueError, "x must be >= 0", Rectangle, 8, 6, -1, 2, 18)
+        ValueError, "x must be >= 0", Square, 6, -1, 2, 18)
         self.assertRaisesRegex(
-            ValueError, "y must be >= 0", Rectangle, 8, 6, 4, -1, 18)
-        self.assertRaisesRegex(TypeError, "", Rectangle, )
+        ValueError, "y must be >= 0", Square, 6, 4, -1, 18)
+        self.assertRaisesRegex(TypeError, "", Square, )
 
-        r1 = Square(2, 2)
+        r1 = Square(2)
         eo = '##\n##\n'
         with StringIO() as buffer, redirect_stdout(buffer):
             r1.display()
             result = buffer.getvalue()
         self.assertEqual(result, eo)
 
-        r = Rectangle(3, 7, 5, 9)
-        self.assertEqual(r.update().id, 9)
-        self.assertEqual(r.update().size, 3)
-        self.assertEqual(r.update().x, 7)
-        self.assertEqual(r.update().y, 5)
+        r = Square(1, 2, 3, 4)
+        r.update(89)
+        self.assertEqual(r.id, 89)
+        r.update(89, 3)
+        self.assertEqual(r.width, 3)
 
-        r = Rectangle(16, 12, 15, 25)
-        self.assertEqual(str(r), "[Rectangle] (25) 12/15 - 16")
+        r = Square(16, 12, 15, 25)
+        self.assertEqual(str(r), "[Square] (25) 12/15 - 16")

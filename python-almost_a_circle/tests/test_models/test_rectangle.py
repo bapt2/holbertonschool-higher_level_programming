@@ -6,6 +6,7 @@ import unittest
 from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
+from contextlib import redirect_stdout
 
 class test_Rectangle(unittest.TestCase):
     """ unittest """
@@ -45,14 +46,12 @@ class test_Rectangle(unittest.TestCase):
             result = buffer.getvalue()
         self.assertEqual(result, eo)
 
-        r = Rectangle(2, 3, 7, 5, 9)
-        self.assertEqual(r.update().id, 9)
-        self.assertEqual(r.update().width, 2)
-        self.assertEqual(r.update().height, 3)
-        self.assertEqual(r.update().x, 7)
-        self.assertEqual(r.update().y, 5)
+        r = Rectangle(1, 2, 3, 4)
+        r.update(89)
+        self.assertEqual(r.id, 89)
+        r.update(89, 3)
+        self.assertEqual(r.width, 3)
+
 
         r = Rectangle(14, 16, 12, 15, 25)
         self.assertEqual(str(r), "[Rectangle] (25) 12/15 - 14/16")
-
-        
