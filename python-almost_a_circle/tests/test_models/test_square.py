@@ -39,8 +39,8 @@ class test_Square(unittest.TestCase):
             r1.display()
             result = buffer.getvalue()
         self.assertEqual(result, eo)
-        r1 = Square(2)
-        eo = '##\n##\n'
+        r1 = Square(2, 1, 1)
+        eo = '\n ##\n ##\n'
         with StringIO() as buffer, redirect_stdout(buffer):
             r1.display()
             result = buffer.getvalue()
