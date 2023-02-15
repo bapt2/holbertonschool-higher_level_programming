@@ -49,3 +49,15 @@ class Base():
             x = cls(3)
         x.update(**dictionary)
         return x
+
+    @classmethod
+    def load_from_file(cls):
+        """  """
+        try:
+            with open(cls.__name__ + '.json', 'r') as file:
+                text = file.read()
+        except:
+            text = None
+
+        data = cls.from_json_string(text)
+        return [cls.create(**v) for v in data]
