@@ -43,7 +43,7 @@ class Base():
     @classmethod
     def create(cls, **dictionary):
         """ returns an instance with all attributes already set """
-        if 'Rectangle' in cls.__name__.lower():
+        if cls.__name__ == 'Rectangle':
             x = cls(3, 3)
         else:
             x = cls(3)
