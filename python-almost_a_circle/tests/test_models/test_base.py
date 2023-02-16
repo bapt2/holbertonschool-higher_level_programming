@@ -9,16 +9,13 @@ class Test_Base(unittest.TestCase):
     def test_init(self):
         """ tests attribute id """
         j = Base()
-        print(j.id, 1)
+        self.assertEqual(j.id, 1)
 
         j1= Base()
-        print(j1.id, 2)
+        self.assertEqual(j1.id, 2)
+        
+        b1 = Base(12)
+        self.assertEqual(b1.id, 12)
 
-        b = Base()
-        print(b.id, 1)
-
-        b = Base(12)
-        print(b.id, 12)
-
-        b1 = Base(21)
-        print(b1.id, 21)
+        b2 = Base(21)
+        self.assertEqual(b2.id, 21)
