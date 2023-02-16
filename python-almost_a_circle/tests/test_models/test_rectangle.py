@@ -3,6 +3,7 @@
 
 
 import unittest
+import os
 from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
@@ -58,6 +59,48 @@ class test_Rectangle(unittest.TestCase):
         r.update(89, 3)
         self.assertEqual(r.width, 3)
 
-
         r = Rectangle(14, 16, 12, 15, 25)
         self.assertEqual(str(r), "[Rectangle] (25) 12/15 - 14/16")
+
+        r = Rectangle(10, 2, 1, 9, 7)
+        self.assertEqual(r.to_dictionary(), {"id": 7, "width": 10,
+                                             "height": 2, "x": 1, "y": 9})
+
+        r = Rectangle.create(**{"id": 7, "width": 10,
+                                "height": 2, "x": 1, "y": 9})
+        rep = Rectangle(10, 2, 1, 9, 7)
+        self.assertEqual(str(r), str(rep))
+        r = Rectangle.create(**{"id": 7, "width": 10,
+                                "height": 2, "x": 1})
+        rep = Rectangle(10, 2, 1, 0, 7)
+        self.assertEqual(str(r), str(rep))
+        r = Rectangle.create(**{"id": 7, "width": 10,
+                                "height": 2,})
+        rep = Rectangle(10, 2, 0, 0, 7)
+        self.assertEqual(str(r), str(rep))
+
+        r = Rectangle(4, 2)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        eo = '[{"id": 7, "width": 4, "height": 2, "x": 0, "y": 0}]'
+        self.assertEqual(content, eo)
+        os.remove("Rectangle.json")
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        eo = '[]'
+        self.assertEqual(content, eo)
+        os.remove("Rectangle.json")
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        eo = '[]'
+        self.assertEqual(content, eo)
+        os.remove("Rectangle.json")
+        
+        r = Rectangle.load_from_file()
+        self.assertTrue(isinstance(r, list))
+        self.assertEqual(r, [])
