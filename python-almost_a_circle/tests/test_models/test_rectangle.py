@@ -79,7 +79,7 @@ class test_Rectangle(unittest.TestCase):
         rep = Rectangle(10, 2, 0, 0, 7)
         self.assertEqual(str(r), str(rep))
 
-        r = Rectangle(4, 2)
+        r = Rectangle(4, 2, 0, 0, 7)
         Rectangle.save_to_file([r])
         with open("Rectangle.json", "r") as f:
             content = f.read()
@@ -100,7 +100,15 @@ class test_Rectangle(unittest.TestCase):
         eo = '[]'
         self.assertEqual(content, eo)
         os.remove("Rectangle.json")
-        
+
+        r1 = Rectangle(50, 5)
+        Rectangle.save_to_file([r1])
+        rectangles = Rectangle.load_from_file()
+        self.assertIsInstance(rectangles[0], Rectangle)
+        self.assertEqual(rectangles[0].width, 50)
+        self.assertEqual(rectangles[0].height, 5)
+        os.remove("Rectangle.json")
+
         r = Rectangle.load_from_file()
         self.assertTrue(isinstance(r, list))
         self.assertEqual(r, [])
