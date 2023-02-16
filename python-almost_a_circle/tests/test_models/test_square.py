@@ -59,13 +59,13 @@ class test_Square(unittest.TestCase):
         r = Square(10, 1, 9, 7)
         self.assertEqual(r.to_dictionary(), {"id": 7, "size": 10, "x": 1, "y": 9})
 
-        r = Square.create(**{"id": 7, "size": 10, "x": 1, "y": 9})
+        r = Square.create(**{"id": 7, "width": 10, "x": 1, "y": 9})
         rep = Square(10, 1, 9, 7)
         self.assertEqual(str(r), str(rep))
-        r = Square.create(**{"id": 7, "size": 10, "x": 1})
+        r = Square.create(**{"id": 7, "width": 10, "x": 1})
         rep = Square(10, 1, 0, 7)
         self.assertEqual(str(r), str(rep))
-        r = Square.create(**{"id": 7, "size": 10})
+        r = Square.create(**{"id": 7, "width": 10})
         rep = Square(10, 0, 0, 7)
         self.assertEqual(str(r), str(rep))
 
@@ -95,7 +95,7 @@ class test_Square(unittest.TestCase):
         Square.save_to_file([r1])
         squares = Square.load_from_file()
         self.assertIsInstance(squares[0], Square)
-        self.assertEqual(squares[0].size, 50)
+        self.assertEqual(squares[0].width, 50)
         os.remove("Square.json")
 
         r = Square.load_from_file()
