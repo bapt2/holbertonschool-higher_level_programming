@@ -33,6 +33,8 @@ class test_Square(unittest.TestCase):
         self.assertRaisesRegex(
         ValueError, "y must be >= 0", Square, 6, 4, -1, 18)
         self.assertRaisesRegex(TypeError, "", Square, )
+        self.assertRaisesRegex(
+        ValueError, "width must be > 0", Square, 0, 4, 2, 18)
 
         r1 = Square(2)
         eo = '##\n##\n'
