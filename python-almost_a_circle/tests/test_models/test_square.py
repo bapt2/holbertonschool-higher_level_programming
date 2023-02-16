@@ -7,6 +7,7 @@ from models.base import Base
 from io import StringIO
 from models.square import Square
 from contextlib import redirect_stdout
+import os
 
 class test_Square(unittest.TestCase):
     """ unittest """
@@ -54,3 +55,49 @@ class test_Square(unittest.TestCase):
 
         r = Square(16, 12, 15, 25)
         self.assertEqual(str(r), "[Square] (25) 12/15 - 16")
+
+        r = Square(10, 1, 9, 7)
+        self.assertEqual(r.to_dictionary(), {"id": 7, "size": 10, "x": 1, "y": 9})
+
+        r = Square.create(**{"id": 7, "size": 10, "x": 1, "y": 9})
+        rep = Square(10, 1, 9, 7)
+        self.assertEqual(str(r), str(rep))
+        r = Square.create(**{"id": 7, "size": 10, "x": 1})
+        rep = Square(10, 1, 0, 7)
+        self.assertEqual(str(r), str(rep))
+        r = Square.create(**{"id": 7, "size": 10})
+        rep = Square(10, 0, 0, 7)
+        self.assertEqual(str(r), str(rep))
+
+        r = Square(4, 0, 0, 7)
+        Square.save_to_file([r])
+        with open("Square.json", "r") as f:
+            content = f.read()
+        eo = '[{"id": 7, "size": 4, "x": 0, "y": 0}]'
+        self.assertEqual(content, eo)
+        os.remove("Square.json")
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            content = f.read()
+        eo = '[]'
+        self.assertEqual(content, eo)
+        os.remove("Square.json")
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            content = f.read()
+        eo = '[]'
+        self.assertEqual(content, eo)
+        os.remove("Square.json")
+
+        r1 = Square(50)
+        Square.save_to_file([r1])
+        squares = Square.load_from_file()
+        self.assertIsInstance(squares[0], Square)
+        self.assertEqual(squares[0].size, 50)
+        os.remove("Square.json")
+
+        r = Square.load_from_file()
+        self.assertTrue(isinstance(r, list))
+        self.assertEqual(r, [])
