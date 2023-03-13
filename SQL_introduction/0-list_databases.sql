@@ -1,2 +1,2 @@
 --lists DATABASES
-SHOW databases;
+SHOW DATABASES;
