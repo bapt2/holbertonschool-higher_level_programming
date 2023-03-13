@@ -1,2 +1,2 @@
-#lists DATABASES
+/*lists DATABASES*/
 SHOW DATABASES;
