@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     cursor = connection.cursor()
     request = "SELECT * FROM states WHERE name LIKE BINARY '{}'\
-                ORDER BY states.id ASC"
+                ORDER BY states.id ASC".format(statename)
     cursor.execute(request)
 
     stateList = cursor.fetchall()
