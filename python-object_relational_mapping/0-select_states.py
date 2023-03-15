@@ -22,4 +22,4 @@ for state in stateList:
     print(state)
 
 cursor.close()
-db.close
+db.close()
