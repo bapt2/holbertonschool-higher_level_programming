@@ -23,8 +23,7 @@ if __name__ == "__main__":
 
     cityList = cursor.fetchall()
 
-    for city in cityList:
-        print(city)
+    print(", ".join(city[0] for city in cityList))
 
     cursor.close()
     connection.close()
