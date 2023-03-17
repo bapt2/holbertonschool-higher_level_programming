@@ -5,6 +5,8 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        sys.exit(1)
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
@@ -17,7 +19,7 @@ if __name__ == "__main__":
     request = "SELECT cities.name, states.name\
         FROM cities, states WHERE cities.state_id = states.id\
         ORDER BY cities.id"
-    cursor.execute(request)
+    cursor.execute(request, (state_name,))
 
     cityList = cursor.fetchall()
 
