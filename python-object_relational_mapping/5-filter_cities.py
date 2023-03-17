@@ -16,8 +16,8 @@ if __name__ == "__main__":
                                  port=3306)
 
     cursor = connection.cursor()
-    request = "SELECT cities.name, states.name\
-        FROM cities, states WHERE cities.state_id = states.id\
+    request = "SELECT cities.name FROM cities JOIN states \
+    ON cities.stade_id = states.id WHERE state.name = %s\
         ORDER BY cities.id"
     cursor.execute(request, (state_name,))
 
