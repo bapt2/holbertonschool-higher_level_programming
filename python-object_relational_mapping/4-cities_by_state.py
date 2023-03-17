@@ -20,10 +20,10 @@ if __name__ == "__main__":
         ORDER BY cities.id"
     cursor.execute(request)
 
-    stateList = cursor.fetchall()
+    citiesList = cursor.fetchall()
 
-    for state in stateList:
-        print(state)
+    for cities in citiesList:
+        print(cities)
 
     cursor.close()
     connection.close()
