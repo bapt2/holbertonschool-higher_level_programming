@@ -19,7 +19,7 @@ if __name__ == "__main__":
     stateList = cursor.fetchall()
 
     for state in stateList:
-        if argv[1][0] == "N":
+        if sys.argv[1][0] == "N":
             print(state)
 
     cursor.close()
