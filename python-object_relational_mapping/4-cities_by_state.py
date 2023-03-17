@@ -15,15 +15,15 @@ if __name__ == "__main__":
                                  port=3306)
 
     cursor = connection.cursor()
-    request = "SELECT citie.id, citie.name, states.name\
+    request = "SELECT cities.id, cities.name, states.name\
         FROM states, cities WHERE cities.state_id = states.id\
         ORDER BY cities.id"
     cursor.execute(request)
 
-    citiesList = cursor.fetchall()
+    cityList = cursor.fetchall()
 
-    for cities in citiesList:
-        print(cities)
+    for city in cityList:
+        print(city)
 
     cursor.close()
     connection.close()
