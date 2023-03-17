@@ -16,7 +16,7 @@ if __name__ == "__main__":
                                  port=3306)
 
     cursor = connection.cursor()
-    request = "SELECT * FROM states WHERE name LIKE BINARY'{}'\
+    request = "SELECT * FROM states WHERE name = '{}'\
         ORDER BY states.id".format(statename)
     cursor.execute(request)
 
