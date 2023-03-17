@@ -23,7 +23,9 @@ if __name__ == "__main__":
 
     cityList = cursor.fetchall()
 
-    print(", ".join(city[0] for city in cityList))
+    citynames = ", ".join(city[0] for city in cityList)
+
+    print(citynames.rstrip(', '))
 
     cursor.close()
     connection.close()
