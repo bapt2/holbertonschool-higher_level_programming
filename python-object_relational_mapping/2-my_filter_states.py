@@ -21,8 +21,7 @@ if __name__ == "__main__":
     stateList = cursor.fetchall()
 
     for state in stateList:
-        if state[1][0] == "N":
-            print(state)
+        print(state)
 
     cursor.close()
     connection.close()
