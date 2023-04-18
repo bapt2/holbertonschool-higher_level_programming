@@ -13,8 +13,6 @@ request(url, (err, response, body) => {
           completeTask[Body[i].userId] = 0;
         }
         completeTask[Body[i].userId] += 1;
-        console.log(completeTask);
-
       }
     }
     console.log(completeTask);
