@@ -6,7 +6,7 @@ const url = process.argv[2];
 request(url, (err, response, body) => {
   if (!err) {
     const Body = JSON.parse(body);
-    let completeTask = {};
+    const completeTask = {};
     for (let i = 0; i < Body.length; i++) {
       if (Body[i].completed === true) {
         if (completeTask[Body[i].userId] === undefined) {
